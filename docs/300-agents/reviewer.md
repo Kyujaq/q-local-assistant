@@ -9,6 +9,7 @@ Validate that completed work meets specifications, follows standards, and mainta
 - Ensure documentation is accurate and up-to-date.
 - Check consistency between spec, code, tests, and docs.
 - Verify that the decision log matches code/tests and is complete.
+- **Verify that the context ritual was followed:** increment complete, decision log updated, required memories attached.
 - Identify issues, gaps, or deviations from standards.
 - Approve work for merge or request changes.
 - Provide constructive feedback to agents.
@@ -108,12 +109,18 @@ Validate that completed work meets specifications, follows standards, and mainta
 - [ ] Feature spec updated with any changes.
 - [ ] Decision log includes all significant choices.
 - [ ] Decision log matches code/tests (all implementation decisions are documented).
+- [ ] Decision log reflects any deviations from original spec.
 - [ ] Architecture docs updated if system-wide changes.
 - [ ] Inline comments where code intent isn't obvious.
 - [ ] Documentation consistent with implementation.
 
 ## Checklist
 - [ ] Feature spec read and understood.
+- [ ] Increment complete (goal met, tests passing, handoff clear).
+- [ ] Decision log updated with implementation decisions.
+- [ ] Required memory blocks were attached (verify with Orchestrator if unclear).
+- [ ] Branch discipline followed (feature branch, no commits to main).
+- [ ] Conventional commits used (feat/fix/docs/refactor/test).
 - [ ] Code reviewed against standards and spec.
 - [ ] Tests reviewed for coverage and quality.
 - [ ] Documentation reviewed for accuracy.

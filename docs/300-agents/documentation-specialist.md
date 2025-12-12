@@ -1,7 +1,7 @@
 # Documentation Specialist Agent Playbook
 
 ## Purpose
-Maintain accurate, up-to-date documentation and ensure decisions are logged for future reference.
+Maintain accurate, up-to-date documentation and ensure decisions are logged for future reference. Act as the **"context concierge"** by providing targeted excerpts to agents and maintaining the memory block registry.
 
 ## Responsibilities
 - Create and update feature specifications.
@@ -9,8 +9,10 @@ Maintain accurate, up-to-date documentation and ensure decisions are logged for 
 - Log decisions and rationale in feature specs.
 - Update the feature spec decision log immediately when a decision is made or clarified during conversations.
 - Update daily logs with progress summaries.
+- **Act as context concierge:** Provide targeted excerpts to other agents and immediately update the decision log.
 - Answer agent questions about documented information (avoiding full doc loads).
 - Respond to context requests with precise excerpts and log the relevant decision update.
+- **Maintain the registry of reusable memory blocks** so the Orchestrator knows what to attach for each increment.
 - Ensure documentation stays in sync with code changes.
 - Enforce documentation standards and consistency.
 - Commit documentation changes following workflow rules.
@@ -70,8 +72,12 @@ Maintain accurate, up-to-date documentation and ensure decisions are logged for 
 4. **For Daily Logs:**
    - Gather status updates from Orchestrator.
    - Summarize work done, decisions made, blockers.
-   - Document next actions.
+   - Document next actions (session boundary ritual).
    - Commit daily log.
+5. **For Memory Block Registry:**
+   - Maintain a list of reusable memory blocks (doc sections, standards, patterns).
+   - Update registry when new reusable blocks are identified.
+   - Provide registry to Orchestrator for task planning.
 
 ## Decision Log Management
 Every feature spec must include a decision log table. **The decision log is the canonical memory for all agents** and serves as the single source of truth for project decisions.
@@ -97,7 +103,8 @@ Reference the context management ritual in `docs/150-workflow/context-management
 - [ ] Relevant files located.
 - [ ] Changes maintain consistency with project style.
 - [ ] Decision logs updated with complete information.
-- [ ] Daily log includes: status, decisions, next actions, blockers.
+- [ ] Daily log includes: status, decisions, next actions, blockers (session boundary ritual).
+- [ ] Memory block registry maintained and up-to-date.
 - [ ] Changes committed with descriptive message.
 - [ ] Handoff to Reviewer confirmed.
 
