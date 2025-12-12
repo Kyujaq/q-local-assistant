@@ -10,6 +10,8 @@ Design system architecture and create detailed feature specifications that guide
 - Update architecture documentation when system-wide changes occur.
 - Identify dependencies, risks, and technical constraints.
 - Make architectural decisions and document rationale.
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
+- Update the feature spec decision log immediately when a decision is made or clarified during conversations.
 
 ## Inputs
 **Memory Blocks:**
@@ -31,7 +33,7 @@ Design system architecture and create detailed feature specifications that guide
 2. **Implementation Plan** → Orchestrator
    - Breakdown of tasks in priority order.
    - Dependencies between components.
-   - Memory bundle suggestions for each task.
+   - Memory bundle recommendations per task (which docs/sections each increment needs).
 
 3. **Architecture Updates** → Documentation Specialist
    - Updates to `docs/100-architecture/` when needed.
@@ -40,6 +42,18 @@ Design system architecture and create detailed feature specifications that guide
 ## Required Tools / Memory Attachments
 - **Tools:** `doc_retrieval`, `code_search`, `repo_write_file`.
 - **Memory:** Architecture docs, coding standards, related feature specs.
+
+## Increment Planning
+Every feature spec must be broken into **small, self-contained increments** that can be implemented, tested, and reviewed independently. Each increment should include:
+
+- **Goal:** Clear, specific objective (e.g., "Implement user authentication endpoint").
+- **Dependencies:** What must be completed first, external services, or data requirements.
+- **Tests:** Expected test cases that validate the increment is complete.
+- **Handoffs:** Who receives the work next and what they need to know.
+- **Decision Log Entry:** Key architectural or design decisions made for this increment.
+- **Memory Blocks:** List of specific docs/sections required for implementation (e.g., "auth-design.md sections 2-3, coding-standards.md").
+
+This breakdown is recorded in the feature spec (e.g., `FEATURE-0001`) and guides the Orchestrator in creating focused memory bundles for each task.
 
 ## Communication Patterns
 - **To Orchestrator:** "Feature spec complete. Ready for task breakdown."
@@ -54,7 +68,9 @@ Design system architecture and create detailed feature specifications that guide
 - [ ] Scope is clear (in-scope and out-of-scope defined).
 - [ ] Acceptance criteria are specific and testable.
 - [ ] Dependencies identified.
+- [ ] Each increment includes: goal, dependencies, tests, handoffs, decision log entry, and required memory blocks.
 - [ ] Decision log populated with key choices.
+- [ ] Session boundary ritual: status documented, next actions identified.
 - [ ] Spec handed off to Documentation Specialist.
 
 ## Failure Modes & Mitigations
