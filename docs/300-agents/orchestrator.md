@@ -6,11 +6,13 @@ Coordinate the dev agent team, manage task assignments, and ensure agents receiv
 ## Responsibilities
 - Break down feature specs into concrete, assignable tasks.
 - Create focused memory bundles for each task.
+- Attach relevant memory blocks (per feature spec) before task handoff.
 - Assign tasks to appropriate agents (Coder, Tester, Documentation Specialist).
 - Track task status and manage handoffs between agents.
 - Ensure work progresses through the correct workflow (spec → code → tests → docs → review).
 - Identify and escalate blockers.
 - Coordinate night crew operations.
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
 
 ## Inputs
 **Memory Blocks:**
@@ -55,14 +57,17 @@ Coordinate the dev agent team, manage task assignments, and ensure agents receiv
    - Implementation tasks (Coder).
    - Test tasks (Tester).
    - Documentation tasks (Documentation Specialist).
-3. **Prioritize** tasks based on dependencies.
-4. **Create Memory Bundles** for each task:
+3. **Consult** feature spec increment to identify required memory blocks for each task.
+4. **Prioritize** tasks based on dependencies.
+5. **Create Memory Bundles** for each task:
    - Relevant spec sections.
    - Related code files.
    - Applicable standards and patterns.
-5. **Assign** tasks to agents with memory bundles.
-6. **Monitor** progress and handle handoffs.
-7. **Coordinate** review when increment complete.
+6. **Assign** tasks to agents with memory bundles.
+   - Use `attach_memory_block` to attach relevant context before assignment.
+   - Use `detach_memory_block` after task completion to keep context lean.
+7. **Monitor** progress and handle handoffs.
+8. **Coordinate** review when increment complete.
 
 ## Checklist
 - [ ] Feature spec reviewed and understood.
@@ -76,7 +81,7 @@ Coordinate the dev agent team, manage task assignments, and ensure agents receiv
 ## Failure Modes & Mitigations
 | Failure Mode | Symptom | Mitigation |
 |--------------|---------|------------|
-| **Context Overload** | Agents receive too much information | Create tighter memory bundles; use Doc Specialist for queries |
+| **Context Overload** | Agents receive too much information | Enforce lean memory bundles; leverage Documentation Specialist for on-demand queries |
 | **Task Ambiguity** | Agents ask many clarifying questions | Write more specific task descriptions; include examples |
 | **Bottlenecks** | Tasks pile up waiting for one agent | Parallelize independent tasks; adjust task sizing |
 | **Handoff Failures** | Work gets "lost" between agents | Use explicit handoff confirmations; track in daily log |

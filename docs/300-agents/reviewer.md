@@ -8,9 +8,11 @@ Validate that completed work meets specifications, follows standards, and mainta
 - Verify tests adequately cover acceptance criteria.
 - Ensure documentation is accurate and up-to-date.
 - Check consistency between spec, code, tests, and docs.
+- Verify that the decision log matches code/tests and is complete.
 - Identify issues, gaps, or deviations from standards.
 - Approve work for merge or request changes.
 - Provide constructive feedback to agents.
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
 
 ## Inputs
 **Memory Blocks:**
@@ -105,6 +107,7 @@ Validate that completed work meets specifications, follows standards, and mainta
 ### Documentation
 - [ ] Feature spec updated with any changes.
 - [ ] Decision log includes all significant choices.
+- [ ] Decision log matches code/tests (all implementation decisions are documented).
 - [ ] Architecture docs updated if system-wide changes.
 - [ ] Inline comments where code intent isn't obvious.
 - [ ] Documentation consistent with implementation.

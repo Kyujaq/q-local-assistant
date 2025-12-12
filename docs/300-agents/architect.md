@@ -10,6 +10,8 @@ Design system architecture and create detailed feature specifications that guide
 - Update architecture documentation when system-wide changes occur.
 - Identify dependencies, risks, and technical constraints.
 - Make architectural decisions and document rationale.
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
+- Update the feature spec decision log immediately when a decision is made or clarified during conversations.
 
 ## Inputs
 **Memory Blocks:**
@@ -31,7 +33,7 @@ Design system architecture and create detailed feature specifications that guide
 2. **Implementation Plan** → Orchestrator
    - Breakdown of tasks in priority order.
    - Dependencies between components.
-   - Memory bundle suggestions for each task.
+   - Memory bundle recommendations per task (which docs/sections each increment needs).
 
 3. **Architecture Updates** → Documentation Specialist
    - Updates to `docs/100-architecture/` when needed.
@@ -54,6 +56,7 @@ Design system architecture and create detailed feature specifications that guide
 - [ ] Scope is clear (in-scope and out-of-scope defined).
 - [ ] Acceptance criteria are specific and testable.
 - [ ] Dependencies identified.
+- [ ] Context ritual: spec broken into bite-sized increments; memory blocks documented per increment.
 - [ ] Decision log populated with key choices.
 - [ ] Spec handed off to Documentation Specialist.
 

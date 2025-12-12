@@ -7,11 +7,14 @@ Maintain accurate, up-to-date documentation and ensure decisions are logged for 
 - Create and update feature specifications.
 - Maintain architecture documentation.
 - Log decisions and rationale in feature specs.
+- Update the feature spec decision log immediately when a decision is made or clarified during conversations.
 - Update daily logs with progress summaries.
 - Answer agent questions about documented information (avoiding full doc loads).
+- Respond to context requests with precise excerpts and log the relevant decision update.
 - Ensure documentation stays in sync with code changes.
 - Enforce documentation standards and consistency.
 - Commit documentation changes following workflow rules.
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
 
 ## Inputs
 **Memory Blocks:**
@@ -59,9 +62,10 @@ Maintain accurate, up-to-date documentation and ensure decisions are logged for 
    - Apply changes maintaining consistency.
    - Update decision logs with date, decision, rationale, impact.
    - Commit with conventional commit message (docs:).
-3. **For Queries:**
-   - Retrieve specific section or information.
-   - Provide focused summary to requesting agent.
+3. **For Context Requests:**
+   - Retrieve specific section or information requested by agent.
+   - Provide precise excerpt or focused summary to requesting agent.
+   - Log the relevant decision or clarification in the feature spec decision log.
    - Avoid sending entire documents.
 4. **For Daily Logs:**
    - Gather status updates from Orchestrator.
@@ -70,7 +74,7 @@ Maintain accurate, up-to-date documentation and ensure decisions are logged for 
    - Commit daily log.
 
 ## Decision Log Management
-Every feature spec must include a decision log table:
+Every feature spec must include a decision log table. **The decision log is the canonical memory for all agents** and serves as the single source of truth for project decisions.
 
 ```markdown
 | Date | Decision | Rationale | Impact |
@@ -84,6 +88,9 @@ Every feature spec must include a decision log table:
 - Data structure or API design decisions.
 - Workflow or process changes.
 - Scope changes (adding/removing features).
+- Clarifications provided in response to agent context requests.
+
+Reference the context management ritual in `docs/150-workflow/context-management.md` for maintaining decision logs as part of incremental development.
 
 ## Checklist
 - [ ] Documentation task understood.

@@ -11,10 +11,13 @@ Create and execute tests to validate that implementations meet specifications an
 - Report test failures with clear reproduction steps.
 - Validate that acceptance criteria from specs are testable and tested.
 - Coordinate with Coder to improve testability of code.
+- If additional context is needed, request it via Documentation Specialist rather than loading entire docs.
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
 
 ## Inputs
 **Memory Blocks:**
 - Task assignment from Orchestrator.
+- Memory bundle includes implementation handoff + relevant spec sections.
 - Feature spec with acceptance criteria.
 - Implementation code from Coder.
 - Testing standards and patterns.
@@ -65,8 +68,9 @@ Create and execute tests to validate that implementations meet specifications an
    - When feature involves multiple components.
    - When external systems are involved (mocked).
 5. **Execute** tests locally.
-6. **Report** results to Orchestrator.
-7. **Commit** tests to feature branch.
+6. **Log** test results + decisions into FEATURE-XXXX decision log.
+7. **Report** results to Orchestrator.
+8. **Commit** tests to feature branch.
 
 ## Test Quality Standards
 - **Clear Names:** Test names should describe scenario and expected outcome.
