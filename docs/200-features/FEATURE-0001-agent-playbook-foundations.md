@@ -22,6 +22,7 @@ Establish the foundational playbooks, context management strategy, tooling requi
   - Coder
   - Tester
   - Documentation Specialist
+  - Spec Writer (lightweight doc formatting using smaller model)
   - Reviewer
 - **Context Management**: Document the context-management ritual and memory-assignment process (see `docs/150-workflow/context-management.md`).
 - **Tooling Specifications**: 
@@ -43,6 +44,7 @@ Establish the foundational playbooks, context management strategy, tooling requi
 | Orchestrator | Task coordination & memory management | Task assignments, memory bundles |
 | Coder | Code implementation | Source code, commit messages |
 | Tester | Test creation & validation | Test files, test reports |
+| Spec Writer | Lightweight doc formatting (Slot S) | Formatted documentation sections |
 | Documentation Specialist | Docs & decision logging | Updated specs, daily logs |
 | Reviewer | Quality assurance & consistency | Review reports, merge approval |
 
@@ -62,11 +64,11 @@ Establish the foundational playbooks, context management strategy, tooling requi
 ### Nice-to-Have Tools
 - **code_search**: Semantic search across codebase.
 - **doc_retrieval**: Fetch specific doc sections by query.
-
-## Acceptance Criteria
-- [ ] All six agent playbooks committed to `docs/300-agents/`.
-- [ ] Context management doc published at `docs/150-workflow/context-management.md`.
-- [ ] Tooling specifications logged with status and blockers.
+x] All agent playbooks committed to `docs/300-agents/` (7 total including Spec Writer).
+- [x] Context management doc published at `docs/150-workflow/context-management.md`.
+- [x] Tooling specifications logged with status and blockers.
+- [x] Daily log template created at `docs/daily-logs/TEMPLATE.md`.
+- [x] Tooling specifications logged with status and blockers.
 - [ ] Daily log template created at `docs/daily-logs/TEMPLATE.md`.
 - [ ] First daily log completed for project bootstrap phase.
 
@@ -74,7 +76,8 @@ Establish the foundational playbooks, context management strategy, tooling requi
 
 | Date | Decision | Rationale | Impact |
 |------|----------|-----------|--------|
-| 2025-12-12 | Created numbered documentation folders (100-architecture, 150-workflow, etc.) | Provides clear ordering and logical grouping | Easier navigation and documentation discovery |
+| 2025-12-12 | Created numbered documentation folders (100-architecture, 150-workflow, etc.) | Provides clear ordering and logical grouping | Easier n
+| 2025-12-12 | Add Spec Writer agent using Slot S | Architect needs lightweight help with doc formatting; smaller model is sufficient for this task | Frees Architect for design work, uses efficient model for routine doc tasks |avigation and documentation discovery |
 | 2025-12-12 | Agent playbooks go in docs/300-agents/ | Separates agent-specific guidance from general workflows | Clear separation of concerns |
 | 2025-12-12 | Defer custom tool implementation | Letta API blockers prevent immediate implementation | Focus on doc foundation, revisit tools later |
 
