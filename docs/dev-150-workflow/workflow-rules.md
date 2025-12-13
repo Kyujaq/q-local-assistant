@@ -6,7 +6,7 @@
 - **nightly/YYYY-MM-DD**: branches used by night crew for automated work; may contain failing tests.
 
 ## Documentation Discipline
-- Every feature starts with a spec in `docs/200-features/`.
+- Every feature starts with a spec in `docs/dev-200-features/`.
 - All decisions and architectural choices must be written immediately into the feature spec.
 - Daily logs should extract or summarize key decisions; relevant items get merged back into feature specs.
 - Architecture documents updated only for significant system-wide changes.
@@ -30,7 +30,7 @@
 - Must produce:
   - code changes (committed to nightly branch)
   - test results
-  - nightly summary written into `docs/daily-logs/`
+  - nightly summary written into `docs/dev-daily-logs/`
 - Server controls night jobs; PC provides compute via coding models.
 
 ## Dev Agents

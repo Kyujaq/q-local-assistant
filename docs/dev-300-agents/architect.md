@@ -27,7 +27,7 @@ Design system architecture and create detailed feature specifications that guide
 
 ## Outputs / Handoffs
 1. **Feature Specification** → Documentation Specialist
-   - Complete spec file in `docs/200-features/FEATURE-XXXX-name.md`.
+   - Complete spec file in `docs/dev-200-features/FEATURE-XXXX-name.md`.
    - Includes: overview, scope, design, acceptance criteria, decision log.
 
 2. **Implementation Plan** → Orchestrator
@@ -36,7 +36,7 @@ Design system architecture and create detailed feature specifications that guide
    - Memory bundle recommendations per task (which docs/sections each increment needs).
 
 3. **Architecture Updates** → Documentation Specialist
-   - Updates to `docs/100-architecture/` when needed.
+   - Updates to `docs/dev-100-architecture/` when needed.
    - Diagrams or design documents.
 
 ## Required Tools / Memory Attachments

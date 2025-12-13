@@ -13,7 +13,7 @@ Validate that completed work meets specifications, follows standards, and mainta
 - Identify issues, gaps, or deviations from standards.
 - Approve work for merge or request changes.
 - Provide constructive feedback to agents.
-- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/dev-150-workflow/context-management.md`).
 
 ## Inputs
 **Memory Blocks:**

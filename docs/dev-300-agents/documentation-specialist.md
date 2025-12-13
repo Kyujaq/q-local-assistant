@@ -16,7 +16,7 @@ Maintain accurate, up-to-date documentation and ensure decisions are logged for 
 - Ensure documentation stays in sync with code changes.
 - Enforce documentation standards and consistency.
 - Commit documentation changes following workflow rules.
-- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/dev-150-workflow/context-management.md`).
 
 ## Inputs
 **Memory Blocks:**
@@ -96,7 +96,7 @@ Every feature spec must include a decision log table. **The decision log is the 
 - Scope changes (adding/removing features).
 - Clarifications provided in response to agent context requests.
 
-Reference the context management ritual in `docs/150-workflow/context-management.md` for maintaining decision logs as part of incremental development.
+Reference the context management ritual in `docs/dev-150-workflow/context-management.md` for maintaining decision logs as part of incremental development.
 
 ## Checklist
 - [ ] Documentation task understood.

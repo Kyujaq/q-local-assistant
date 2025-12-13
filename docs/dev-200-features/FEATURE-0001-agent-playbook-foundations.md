@@ -23,7 +23,7 @@ Establish the foundational playbooks, context management strategy, tooling requi
   - Tester
   - Documentation Specialist
   - Reviewer
-- **Context Management**: Document the context-management ritual and memory-assignment process (see `docs/150-workflow/context-management.md`).
+- **Context Management**: Document the context-management ritual and memory-assignment process (see `docs/dev-150-workflow/context-management.md`).
 - **Tooling Specifications**: 
   - Define requirements for `repo_write_file`, `git_runner`, `test_runner`.
   - Document any blockers or implementation challenges.
@@ -75,11 +75,11 @@ Establish the foundational playbooks, context management strategy, tooling requi
 | Date | Decision | Rationale | Impact |
 |------|----------|-----------|--------|
 | 2025-12-12 | Created numbered documentation folders (100-architecture, 150-workflow, etc.) | Provides clear ordering and logical grouping | Easier navigation and documentation discovery |
-| 2025-12-12 | Agent playbooks go in docs/300-agents/ | Separates agent-specific guidance from general workflows | Clear separation of concerns |
+| 2025-12-12 | Agent playbooks go in docs/dev-300-agents/ | Separates agent-specific guidance from general workflows | Clear separation of concerns |
 | 2025-12-12 | Defer custom tool implementation | Letta API blockers prevent immediate implementation | Focus on doc foundation, revisit tools later |
 
 ## Next Actions
-1. Create individual agent playbook files in `docs/300-agents/`.
+1. Create individual agent playbook files in `docs/dev-300-agents/`.
 2. Finalize daily log template.
 3. Create first daily log summarizing bootstrap work.
 4. Review and refine context-management process.

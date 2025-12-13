@@ -12,7 +12,7 @@ Implement features, refactor code, and fix bugs according to specifications and 
 - Ask clarifying questions when specs are ambiguous.
 - If additional context is needed, request it via Documentation Specialist rather than loading entire docs.
 - Coordinate with Tester to ensure testability.
-- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/dev-150-workflow/context-management.md`).
 
 ## Inputs
 **Memory Blocks:**

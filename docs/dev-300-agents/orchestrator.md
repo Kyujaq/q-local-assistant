@@ -12,14 +12,14 @@ Coordinate the dev agent team, manage task assignments, and ensure agents receiv
 - Ensure work progresses through the correct workflow (spec → code → tests → docs → review).
 - Identify and escalate blockers.
 - Coordinate night crew operations.
-- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/150-workflow/context-management.md`).
+- Follow the context management ritual: bite-sized increments, decision log updates, session boundary status (see `docs/dev-150-workflow/context-management.md`).
 
 ## Inputs
 **Memory Blocks:**
 - Feature spec from Architect.
-- Workflow rules (`docs/150-workflow/workflow-rules.md`).
-- Context management guide (`docs/150-workflow/context-management.md`).
-- Agent playbooks (`docs/300-agents/`).
+- Workflow rules (`docs/dev-150-workflow/workflow-rules.md`).
+- Context management guide (`docs/dev-150-workflow/context-management.md`).
+- Agent playbooks (`docs/dev-300-agents/`).
 
 **Task Information:**
 - Approved feature spec ready for implementation.
