@@ -4,9 +4,27 @@
 
 This is a local-first home assistant with reasoning, memory, voice/vision, and Home Assistant integration. The codebase is **documentation-driven**: all decisions live in `docs/`, not chat history.
 
+**Three-Phase Architecture:**
+
+1. **Bootstrap Phase (GitHub Copilot - NOW)**: You help create the infrastructure for self-hosted development—Letta agent configs, dev tools, framework setup
+2. **Self-Hosted Dev (Letta on PC)**: Dev agents (Orchestrator, Coder, Tester, etc.) build the assistant following Architect's plans
+3. **Production Assistant (Letta on glad0s)**: The final product—runtime agents that interact with users and home systems
+
 **Critical Distinction:**
-- **Dev system** (`docs/dev-*`): Development agents, workflows, and how we build the assistant
-- **Runtime system** (`docs/prod-*`): The assistant itself—Letta agents, orchestrator, behaviors, integrations
+- **Dev system** (`docs/dev-*`, `src/dev_agents/`, `src/dev_tools/`): Self-hosted development team that builds the assistant
+- **Runtime system** (`docs/prod-*`, `src/prod_agents/`, `src/prod_tools/`): The assistant itself—user-facing Letta agents
+
+## Your Role: Bootstrapping Self-Hosted Development
+
+**Goal**: Minimize reliance on paid services by creating self-hosted dev infrastructure.
+
+Your job is to help build the foundation so Letta dev agents can take over:
+- Create Letta agent configurations based on `docs/dev-300-agents/` playbooks
+- Build tools that dev agents will use (git operations, file I/O, test runner)
+- Set up the framework for both Letta instances (dev on PC, prod on glad0s)
+- Document everything so the system is self-sustaining
+
+**End State**: Letta dev agents on PC build the assistant autonomously, with only the Architect potentially remaining external (for now).
 
 ## Documentation Architecture
 
@@ -17,14 +35,22 @@ docs/
 ├── dev-100-architecture/     # Dev team system design
 ├── dev-150-workflow/         # Branching, context management, project philosophy
 ├── dev-200-features/         # Feature specs with decision logs
-├── dev-300-agents/           # Dev agent playbooks (Orchestrator, Architect, Coder, etc.)
+├── dev-300-agents/           # Dev agent playbooks → translate to src/dev_agents/
 ├── dev-daily-logs/           # Development activity logs
 ├── prod-100-architecture/    # Assistant runtime architecture
 ├── prod-200-components/      # Runtime services & modules
-├── prod-300-agents/          # Letta runtime agents
+├── prod-300-agents/          # Runtime agent specs → translate to src/prod_agents/
 ├── prod-400-integrations/    # External system integrations (Home Assistant, Paprika)
 ├── prod-500-behaviors/       # User-facing behaviors
 └── coding-standards.md       # Code style, formatting, testing requirements
+
+src/
+├── dev_agents/               # Letta agent configs for dev team (PC)
+├── dev_tools/                # Tools for dev agents (git, file ops, testing)
+├── prod_agents/              # Letta agent configs for assistant (glad0s)
+├── prod_tools/               # Tools for assistant (Home Assistant, Paprika, etc.)
+├── common/                   # Shared infrastructure (Letta client, config, logging)
+└── services/                 # Supporting services for runtime
 ```
 
 **Before implementing anything:** Read the relevant feature spec in [docs/dev-200-features](docs/dev-200-features) and check its decision log table.
@@ -98,14 +124,38 @@ See [docs/dev-150-workflow/context-management.md](docs/dev-150-workflow/context-
 
 ## Architecture Quick Reference
 
+**Three-Phase Progression:**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ PHASE 1: Bootstrap (GitHub Copilot)                     │
+│ Creates: Agent configs, dev tools, framework            │
+└─────────────────────────────────────────────────────────┘
+                        ↓
+┌─────────────────────────────────────────────────────────┐
+│ PHASE 2: Self-Hosted Dev (Letta on PC)                 │
+│ - Orchestrator, Coder, Tester, Doc Specialist, Reviewer │
+│ - Builds prod_agents/ and prod_tools/                   │
+│ - Night crew runs heavy dev tasks                       │
+│ - Architect: External (biggest model) or local later    │
+└─────────────────────────────────────────────────────────┘
+                        ↓
+┌─────────────────────────────────────────────────────────┐
+│ PHASE 3: Production Assistant (Letta on glad0s)        │
+│ - Runtime agents for user interactions                  │
+│ - Home Assistant, Paprika, voice, vision integrations  │
+│ - Proactive behaviors, memory, reasoning                │
+└─────────────────────────────────────────────────────────┘
+```
+
 **Hardware:**
-- **Server (glad0s)**: Always-on (GTX 1070 + K80), runs core orchestrator, Letta agents, Home Assistant integrations, night crew executor
-- **PC**: High-performance (RTX 4070 Ti Super), runs coding models, dev agents, heavy offline tasks; may be busy/asleep
+- **PC**: High-performance (RTX 4070 Ti Super), hosts Letta dev instance, runs coding models; may be busy/asleep
+- **Server (glad0s)**: Always-on (GTX 1070 + K80), hosts Letta prod instance (the assistant), Home Assistant integrations, night crew executor
 
 **Model Slots:**
 - Slot S (~7B): Fast reactions, routing, lightweight tasks
 - Slot M (~14–30B): Core reasoning (preferred from PC when idle)
-- Slot L (Large): Deep reasoning, planning, night jobs (PC only)
+- Slot L (Large): Deep reasoning, planning, Architect role (PC or external)
 
 See [docs/dev-100-architecture/architecture-overview.md](docs/dev-100-architecture/architecture-overview.md) for complete architecture.
 
@@ -127,26 +177,64 @@ Each increment includes:
 - Decision Log Entry: Key design decisions
 - Memory Blocks: Required docs/sections (e.g., "auth-design.md sections 2-3")
 
-**Code Structure Example** (hypothetical—`src/` is currently empty):
+**Code Structure Example**:
 ```python
-"""Module docstring explaining purpose."""
+# src/dev_tools/file_operations.py
+"""File operations tool for Letta dev agents."""
 
 from typing import Dict, List, Optional
+from pathlib import Path
 
-def process_user_input(
-    text: str,
-    context: Optional[Dict[str, str]] = None
-) -> List[str]:
-    """Process user input and return action list.
+def read_file(
+    file_path: str,
+    start_line: Optional[int] = None,
+    end_line: Optional[int] = None
+) -> str:
+    """Read file contents for dev agent.
     
     Args:
-        text: Raw user input string
-        context: Optional context dictionary with previous state
+        file_path: Absolute path to file
+        start_line: Optional starting line (1-indexed)
+        end_line: Optional ending line (inclusive)
         
     Returns:
-        List of action strings to execute
+        File contents as string
+        
+    Raises:
+        FileNotFoundError: If file doesn't exist
     """
-    # Clear intent comment for non-obvious logic
+    path = Path(file_path)
+    if not path.exists():
+        raise FileNotFoundError(f"File not found: {file_path}")
+    
+    content = path.read_text()
+    if start_line is not None and end_line is not None:
+        lines = content.splitlines()
+        return "\n".join(lines[start_line-1:end_line])
+    return content
+```
+
+```python
+# src/prod_tools/home_assistant.py
+"""Home Assistant integration tool for production assistant."""
+
+from typing import Dict, Any
+import aiohttp
+
+async def turn_on_light(
+    entity_id: str,
+    brightness: Optional[int] = None
+) -> Dict[str, Any]:
+    """Turn on a light via Home Assistant API.
+    
+    Args:
+        entity_id: Home Assistant entity (e.g., 'light.living_room')
+        brightness: Optional brightness 0-255
+        
+    Returns:
+        API response with new state
+    """
+    # Implementation for production assistant
     ...
 ```
 
@@ -168,6 +256,28 @@ def process_user_input(
 - Tailscale (secure access to satellites/mobile)
 
 See [docs/prod-400-integrations](docs/prod-400-integrations) for integration details.
+
+## Bootstrap Phase Tasks (Your Current Mission)
+
+As GitHub Copilot, you're helping build the foundation for self-hosted development:
+
+**Priority 1: Dev Agent Infrastructure**
+- [ ] Create base classes for Letta agent configuration
+- [ ] Translate `docs/dev-300-agents/*.md` playbooks into `src/dev_agents/*.py` configs
+- [ ] Build core dev tools: file operations, git operations, test runner
+- [ ] Set up Letta client wrapper in `src/common/letta_client.py`
+
+**Priority 2: Framework & Testing**
+- [ ] Establish Python environment (pyproject.toml, requirements.txt)
+- [ ] Create test infrastructure (conftest.py, fixtures)
+- [ ] Build first end-to-end test: Can Letta dev agent read a file?
+
+**Priority 3: Night Crew Automation**
+- [ ] Script to trigger Letta dev agents on nightly/* branches
+- [ ] Result collection and commit automation
+- [ ] Daily log generation
+
+**When Bootstrap Complete**: Letta dev agents take over, building `src/prod_agents/` and `src/prod_tools/` autonomously.
 
 ## Quick Start Checklist
 
